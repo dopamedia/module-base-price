@@ -69,7 +69,7 @@ class BasePrice extends \Magento\Framework\View\Element\Template
      */
     public function getReferenceAmount()
     {
-        return $this->saleableItem->getData(ProductAttributeInterface::CODE_BASE_PRICE_REFERENCE_AMOUNT);
+        return round($this->saleableItem->getData(ProductAttributeInterface::CODE_BASE_PRICE_REFERENCE_AMOUNT));
     }
 
     /**
