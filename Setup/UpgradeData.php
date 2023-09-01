@@ -53,6 +53,10 @@ class UpgradeData implements UpgradeDataInterface
         if (version_compare($context->getVersion(), '1.0.1') < 0) {
             $this->changeAttributeBackendTypesToDecimal();
         }
+
+        if (version_compare($context->getVersion(), '1.0.2') < 0) {
+            $this->changeAttributesToUserDefined();
+        }
     }
 
     /**
@@ -69,6 +73,23 @@ class UpgradeData implements UpgradeDataInterface
         foreach ($attributesToUpdate as $attribute_code) {
             $eavSetup->updateAttribute(Product::ENTITY, $attribute_code, 'backend_type', 'decimal');
             $this->moveData($eavSetup->getAttribute(Product::ENTITY, $attribute_code), 'int', 'decimal');
+        }
+    }
+    
+    private function changeAttributesToUserDefined()
+    {
+        $attributesToUpdate = [
+            BasePriceProductAttributeInterface::CODE_ENABLE_BASE_PRICE,
+            BasePriceProductAttributeInterface::CODE_BASE_PRICE_PRODUCT_AMOUNT,
+            BasePriceProductAttributeInterface::CODE_BASE_PRICE_REFERENCE_AMOUNT,
+            BasePriceProductAttributeInterface::CODE_BASE_PRICE_REFERENCE_UNIT,
+            BasePriceProductAttributeInterface::CODE_BASE_PRICE_REFERENCE_AMOUNT
+        ];
+
+        $eavSetup = $this->eavSetup;
+
+        foreach ($attributesToUpdate as $attribute_code) {
+            $eavSetup->updateAttribute(Product::ENTITY, $attribute_code, 'is_user_defined', true);
         }
     }
 
