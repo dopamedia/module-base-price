@@ -8,12 +8,14 @@ namespace Dopamedia\BasePrice\Test\Unit\Model\Attribute\Source;
 
 use Dopamedia\BasePrice\Model\Entity\Attribute\Source\Unit;
 use Magento\Framework\DataObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class UnitTest extends \PHPUnit_Framework_TestCase
+class UnitTest extends TestCase
 {
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Dopamedia\Measure\Api\UnitListInterface
+     * @var MockObject|\Dopamedia\Measure\Api\UnitListInterface
      */
     protected $unitListMock;
 
@@ -25,7 +27,7 @@ class UnitTest extends \PHPUnit_Framework_TestCase
     /**
      * @inheritDoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->unitListMock = $this->getMock('\Dopamedia\Measure\Api\UnitListInterface');
         $this->unit = new Unit($this->unitListMock);

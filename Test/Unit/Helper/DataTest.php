@@ -7,21 +7,25 @@
 namespace Dopamedia\BasePrice\Test\Unit\Helper;
 
 use Dopamedia\BasePrice\Helper\Data;
+use Dopamedia\Measure\Model\BuilderInterface;
+use Dopamedia\Measure\Model\UnitConverterInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class DataTest extends \PHPUnit_Framework_TestCase
+class DataTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\App\Helper\Context
+     * @var MockObject|\Magento\Framework\App\Helper\Context
      */
     protected $contextMock;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Dopamedia\Measure\Model\UnitConverterInterface
+     * @var MockObject|UnitConverterInterface
      */
     protected $unitConverterMock;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Dopamedia\Measure\Model\BuilderInterface
+     * @var MockObject|BuilderInterface
      */
     protected $measureBuilderMock;
 
@@ -31,14 +35,14 @@ class DataTest extends \PHPUnit_Framework_TestCase
     protected $helper;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\Pricing\SaleableInterface
+     * @var MockObject|\Magento\Framework\Pricing\SaleableInterface
      */
     protected $salableItemMock;
 
     /**
      * @inheritDoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->contextMock = $this->getMock('\Magento\Framework\App\Helper\Context', [], [], '', false);
         $this->unitConverterMock = $this->getMock('\Dopamedia\Measure\Model\UnitConverterInterface');

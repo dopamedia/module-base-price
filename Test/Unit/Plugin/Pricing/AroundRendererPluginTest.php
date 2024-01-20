@@ -7,16 +7,18 @@
 namespace Dopamedia\BasePrice\Test\Unit\Plugin\Pricing;
 
 use Dopamedia\BasePrice\Plugin\Pricing\AroundRendererPlugin;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class AroundRendererPluginTest extends \PHPUnit_Framework_TestCase
+class AroundRendererPluginTest extends TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\Pricing\Render
+     * @var MockObject|\Magento\Framework\Pricing\Render
      */
     protected $subjectMock;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\Pricing\SaleableInterface
+     * @var MockObject|\Magento\Framework\Pricing\SaleableInterface
      */
     protected $saleableItemMock;
 
@@ -28,7 +30,7 @@ class AroundRendererPluginTest extends \PHPUnit_Framework_TestCase
     /**
      * @inheritDoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->subjectMock = $this->getMock('\Magento\Framework\Pricing\Render', [], [], '', false);
 
