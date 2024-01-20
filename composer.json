@@ -2,8 +2,8 @@
   "name": "dopamedia/module-base-price",
   "description": "N/A",
   "require": {
-    "php": "^7.0 || ^8.0",
-    "dopamedia/module-measure": "*"
+    "php": "^8.0",
+    "dopamedia/module-measure": "dev-version-2.x"
   },
   "type": "magento2-module",
   "version": "2.0.0",
